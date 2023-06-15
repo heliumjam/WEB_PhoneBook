@@ -21,34 +21,47 @@ public class RegistrationTests extends TestBase {
 //        wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 //    }
 
+ //   @Test
+
+//    public void registrationPositive(){
+//        //open login form
+//        wd.findElement(By.xpath("//*[.='LOGIN']")).click();
+//
+//        //fill login form
+//        int i = (int)((System.currentTimeMillis()/1000)%3600);
+//
+//        WebElement emailInput = wd.findElement(By.xpath("//input[1]"));
+//        emailInput.click();
+//        emailInput.clear();
+//        emailInput.sendKeys("domes"+ i +"@mail.com");
+//
+//        // Alt+shift parts words
+//        WebElement passInput = wd.findElement(By.xpath("//input[2]"));
+//        passInput.click();
+//        passInput.clear();
+//        passInput.sendKeys("123456Aa$");
+//
+//        //click on button Registration
+//        wd.findElement(By.xpath("//button[2]")).click();
+//
+//        // Assert
+////        Assert.assertTrue(wd.findElements(By.xpath("//*[.='Sign Out']")).size() > 0);
+//        // Assert.assertTrue(wd.findElements(By.xpath("//button")).size() > 0);
+//        pause(5000);
+//        Assert.assertTrue(isElementPresent(By.xpath("//button")));
+//    }
     @Test
-
-    public void registrationPositive(){
-        //open login form
-        wd.findElement(By.xpath("//*[.='LOGIN']")).click();
-
-        //fill login form
+    public void registrationPositive() {
         int i = (int)((System.currentTimeMillis()/1000)%3600);
-
-        WebElement emailInput = wd.findElement(By.xpath("//input[1]"));
-        emailInput.click();
-        emailInput.clear();
-        emailInput.sendKeys("domes"+ i +"@mail.com");
-
-        // Alt+shift parts words
-        WebElement passInput = wd.findElement(By.xpath("//input[2]"));
-        passInput.click();
-        passInput.clear();
-        passInput.sendKeys("123456Aa$");
-
-        //click on button Registration
-        wd.findElement(By.xpath("//button[2]")).click();
-
-        // Assert
-//        Assert.assertTrue(wd.findElements(By.xpath("//*[.='Sign Out']")).size() > 0);
-        // Assert.assertTrue(wd.findElements(By.xpath("//button")).size() > 0);
-        pause(5000);
+        String email = "domes"+ i +"@mail.com", password = "123456Aa$";
+        openLoginForm();
+        fillLoginForm(email, password);
+        submitRegistration();
+        pause(1000);
         Assert.assertTrue(isElementPresent(By.xpath("//button")));
+        tearDown();
+
+
     }
 
     @Test
@@ -63,13 +76,30 @@ public class RegistrationTests extends TestBase {
 
         //click on button Registration
         submitRegistration();
-        //click on button
+        tearDown();
+            pause(1000);
 
         // Assert
     }
+@Test
+    public void registrationNegativeWrongPassword(){
+        int i = (int)((System.currentTimeMillis()/1000)%3600);
+        String email = "domes"+ i +"@mail.com", password = "123Aa$";
+        //open login form
+        openLoginForm();
 
-    @AfterTest
-    public void tearDown(){
+        //fill login form
+        fillLoginForm(email, password);
+
+        //click on button Registration
+        submitRegistration();
+
+        tearDown();
 
     }
+
+
+
+
+
 }

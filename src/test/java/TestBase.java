@@ -23,7 +23,8 @@ public class TestBase {
 
     @AfterSuite
     public void tearDown(){
- //   wd.quit();
+        pause(1000);
+   wd.quit();
     }
 
 
@@ -61,9 +62,14 @@ public class TestBase {
         click(By.xpath("//button[2]"));
     }
 
+    public void submitLogin(){
+        click(By.xpath("//button[1]"));
+    }
+
     public boolean isElementPresent(By locator){
         return wd.findElements(locator).size()>0;
     }
+
 
 
 }
