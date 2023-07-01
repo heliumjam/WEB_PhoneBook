@@ -1,0 +1,14 @@
+18:53:02 INFO  tests.TestBase - Method registrationNegativeUserExits is started 
+18:53:02 INFO  manager.WebDriverListener - Start searching element -> By.xpath: //*[.='Sign Out']
+18:53:07 INFO  manager.WebDriverListener - Element with locator -> By.xpath: //*[.='Sign Out'] is found
+18:53:07 INFO  manager.TestNgListener - Test registrationNegativeUserExits invoked
+18:53:07 INFO  manager.WebDriverListener - Start searching element -> By.xpath: //*[.='LOGIN']
+18:53:07 INFO  manager.WebDriverListener - Element with locator -> By.xpath: //*[.='LOGIN'] is found
+18:53:08 INFO  manager.WebDriverListener - Start searching element -> By.xpath: //input[1]
+18:53:08 INFO  manager.WebDriverListener - Element with locator -> By.xpath: //input[1] is found
+18:53:08 INFO  manager.WebDriverListener - Start searching element -> By.xpath: //input[2]
+18:53:08 INFO  manager.WebDriverListener - Element with locator -> By.xpath: //input[2] is found
+18:53:08 INFO  manager.WebDriverListener - Start searching element -> By.xpath: //button[2]
+18:53:08 INFO  manager.WebDriverListener - Element with locator -> By.xpath: //button[2] is found
+18:53:10 INFO  manager.TestNgListener - Test registrationNegativeUserExits successful
+18:53:12 INFO  tests.TestBase - =====================end==method======================== 

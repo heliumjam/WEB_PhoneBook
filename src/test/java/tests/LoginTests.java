@@ -1,13 +1,14 @@
 package tests;
 
 import manager.HelperUser;
+import manager.TestNgListener;
+import model.User;
 import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+import sun.net.util.IPAddressUtil;
 
+@Listeners(TestNgListener.class)
 public class LoginTests extends TestBase {
     @BeforeMethod
     public void precondition() {
@@ -19,10 +20,12 @@ public class LoginTests extends TestBase {
 
     @Test
     public void loginPositiveTestOptimased() {
-        String email = "domes7@mail.com";
-        String password = "123456Aa$";
+//        String email = "domes7@mail.com";String password = "123456Aa$";
+        User user = new User()
+                .withEmail("domes7@mail.com")
+                .withPassword("123456Aa$");
         app.getUser().openLoginForm();
-        app.getUser().fillLoginForm(email, password);
+        app.getUser().fillLoginForm(user);
         app.getUser().submitLogin();
         app.getUser().pause(2000);
         Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//button")));
@@ -30,34 +33,45 @@ public class LoginTests extends TestBase {
 
     @Test
     public void loginNegativeTestWrongEmail() {
-        String email = "domes7mail.com";
-        String password = "123456Aa$";
+        //String email = "domes7mail.com";String password = "123456Aa$";
+        User user = new User()
+                .withEmail("domes7mail.com")
+                .withPassword("123456Aa$");
         app.getUser().openLoginForm();
-        app.getUser().fillLoginForm(email, password);
+        app.getUser().fillLoginForm(user);
         app.getUser().submitLogin();
         app.getUser().pause(2000);
-        app.getUser().asseptAlertOk();
+        //app.getUser().asseptAlertOk();
+        Assert.assertTrue(app.getUser().isWrongFormatMassage());
+        Assert.assertTrue(app.getUser().isAlertPresent());
+
     }
 
     @Test
     public void loginNegativeTestWrongPas() {
-        String email = "domes7@mail.com";
-        String password = "123Aa$";
+    //    String email = "domes7@mail.com";String password = "123Aa$";
+        User user = new User()
+                .withEmail("domes7@mail.com")
+                .withPassword("1Aa$");
         app.getUser().openLoginForm();
-        app.getUser().fillLoginForm(email, password);
+        app.getUser().fillLoginForm(user);
         app.getUser().submitLogin();
         app.getUser().pause(2000);
         app.getUser().asseptAlertOk();
     }
     @Test
-    public void loginPositiveTestChekSignOut() {
-        String email = "domes287@mail.com";
-        String password = "123456Aa$";
+    public void loginPositiveTestCheckSignOut() {
+       // String email = "domes287@mail.com";String password = "123456Aa$";
+        User user = new User()
+                .withEmail("domes287@mail.com")
+                .withPassword("123456Aa$");
         app.getUser().openLoginForm();
-        app.getUser().fillLoginForm(email, password);
+        app.getUser().fillLoginForm(user);
         app.getUser().submitLogin();
         app.getUser().pause(2000);
         Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//button")));
+        app.getUser().logout();
+        Assert.assertFalse(app.getUser().isElementPresent(By.xpath("//button[.='Sign Out']")));
     }
 
     @AfterMethod

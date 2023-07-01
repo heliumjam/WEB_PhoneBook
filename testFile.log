@@ -1,0 +1,4 @@
+16:10:30.768 INFO  tests.TestBase -%PARSER_ERROR[kvp]- User registration Positive / Open Form Invoked.
+16:10:30.996 INFO  tests.TestBase -%PARSER_ERROR[kvp]- User registration Positive / Fill Form Invoked.
+16:10:31.046 INFO  tests.TestBase -%PARSER_ERROR[kvp]- User registration Positive / Submit Form Invoked.
+16:10:33.082 INFO  tests.TestBase -%PARSER_ERROR[kvp]- User registration Positive successfully with Email: : domes630@mail.com & Password: 123456Aa$
