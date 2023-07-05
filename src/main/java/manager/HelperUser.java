@@ -1,7 +1,7 @@
 package manager;
 
 import model.User;
-import org.openqa.selenium.Alert;
+import org.openqa.selenium.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -48,6 +48,7 @@ public class HelperUser extends HelperBase {
     public void asseptAlertOk() {
         wd.switchTo().alert().accept();
     }
+
 
     public boolean isAlertPresent() {
 

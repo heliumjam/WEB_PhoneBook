@@ -1,23 +1,21 @@
 package tests;
 
-import manager.HelperUser;
 import manager.TestNgListener;
 import model.User;
-import org.openqa.selenium.By;
-import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
+import org.openqa.selenium.*;
+import org.testng.*;
+import org.testng.annotations.*;
+
 
 @Listeners(TestNgListener.class)
+
 public class RegistrationTests extends TestBase {
 
     @BeforeMethod
     public void precondition() {
-        if (app.getUser().isLogged()) {
-            app.getUser().logout();
-            app.getUser().pause(2000);
+        if (app.getHelperUser().isLogged()) {
+            app.getHelperUser().logout();
+            app.getHelperUser().pause(2000);
         }
     }
 
@@ -39,11 +37,11 @@ public class RegistrationTests extends TestBase {
     User user = new User()
             .withEmail("domes"+ i +"@mail.com")
             .withPassword("123456Aa$");
-        app.getUser().openLoginForm();
-        app.getUser().fillLoginForm(user);
-        app.getUser().submitRegistration();
-        app.getUser().pause(2000);
-        Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//button")));
+        app.getHelperUser().openLoginForm();
+        app.getHelperUser().fillLoginForm(user);
+        app.getHelperUser().submitRegistration();
+        app.getHelperUser().pause(2000);
+        Assert.assertTrue(app.getHelperUser().isElementPresent(By.xpath("//button")));
 
         logger.info("User registration Positive successfully with Email: : "
                       + user.getEmail() +" & Password: " + user.getPassword());
@@ -57,13 +55,12 @@ public class RegistrationTests extends TestBase {
                 .withEmail("domes"+ i +"mail.com")
                 .withPassword("123456Aa$");
 //        String email = "domes"+ i +"mail.com", password = "123456Aa$";
-        app.getUser().openLoginForm();
+        app.getHelperUser().openLoginForm();
       //  app.getUser().fillLoginForm(email, password);
-        app.getUser().fillLoginForm(user);
-        app.getUser().submitRegistration();
-        app.getUser().pause(2000);
-        app.getUser().asseptAlertOk();
-
+        app.getHelperUser().fillLoginForm(user);
+        app.getHelperUser().submitRegistration();
+        app.getHelperUser().pause(2000);
+        app.getHelperUser().asseptAlertOk();
     }
 @Test
     public void registrationNegativeWrongPassword(){
@@ -72,12 +69,12 @@ public class RegistrationTests extends TestBase {
     User user = new User()
             .withEmail("domes"+ i +"@mail.com")
             .withPassword("123Aa$");
-        app.getUser().openLoginForm();
+        app.getHelperUser().openLoginForm();
  //       app.getUser().fillLoginForm(email, password);
-        app.getUser().fillLoginForm(user);
-        app.getUser().submitRegistration();
-        app.getUser().pause(2000);
-        app.getUser().asseptAlertOk();
+        app.getHelperUser().fillLoginForm(user);
+        app.getHelperUser().submitRegistration();
+        app.getHelperUser().pause(2000);
+        app.getHelperUser().asseptAlertOk();
 
     }
     @Test
@@ -86,16 +83,16 @@ public class RegistrationTests extends TestBase {
         User user = new User()
                 .withEmail("domes7@mail.com")
                 .withPassword("123456Aa$");
-        app.getUser().openLoginForm();
-        app.getUser().fillLoginForm(user);
-        app.getUser().submitRegistration();
-        app.getUser().pause(2000);
-        app.getUser().asseptAlertOk();
+        app.getHelperUser().openLoginForm();
+        app.getHelperUser().fillLoginForm(user);
+        app.getHelperUser().submitRegistration();
+        app.getHelperUser().pause(2000);
+        app.getHelperUser().asseptAlertOk();
     }
 
     @AfterMethod
         public void postcondition() {
-        app.getUser().pause(2000);
+        app.getHelperUser().pause(2000);
     }
 
 }
