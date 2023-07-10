@@ -25,3 +25,29 @@ dependencies {
 test {
     useTestNG()
 }
+
+task myTest (type:Test){
+    useTestNG(){
+        def suite = System.getProperty('suite','')
+        if (suite.equals('reg')){
+            suites '/src/test/resources/reg.xml'
+        }
+        else if (suite.equals('login')){
+            suites '/src/test/resources/login.xml'
+        }
+            else if (suite.equals('add')){
+            suites '/src/test/resources/add.xml'
+        }
+        else if (suite.equals('del')){
+            suites '/src/test/resources/contact.xml'
+        }
+
+        else {
+            suites'/src/test/resources/testng.xml'
+        }
+    }
+    if(project.hasProperty('browser')){
+        systemProperty'browser',"$browser"
+    }
+
+}

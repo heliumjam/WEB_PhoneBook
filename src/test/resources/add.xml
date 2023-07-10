@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="ProductionAddContactSuite" verbose="1" >
+    <test name="addContactTests">
+        <classes>
+            <class name="tests.AddNewContactTests"/>
+        </classes>
+    </test>
+</suite>

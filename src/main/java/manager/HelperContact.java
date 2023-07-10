@@ -31,16 +31,17 @@ public class HelperContact extends HelperBase{
        String phone =  wd.findElement(By.xpath("//div[@class='contact-item_card__2SOIM'][last()]//h3")).getText();
         return phone.equals(contact.getPhone());
     }
+
     public boolean asseptAlertWrongDataAddContact() {
         boolean bool=false;
         String alertText = wd.switchTo().alert().getText();
         System.out.println(alertText);
         if(alertText.contains("not valid")) bool = true;
         wd.switchTo().alert().accept();
-
         //return alertText.contains("not valid");
         return bool;
     }
+
     public String findAndSelectLastContactCreated(){
         String lastPhone = wd.findElement(By.xpath("//div[@class='contact-item_card__2SOIM'][last()]//h3")).getText();
         wd.findElement(By.xpath("//div[@class='contact-item_card__2SOIM'][last()]//h3")).click();
@@ -49,9 +50,11 @@ public class HelperContact extends HelperBase{
     public void asseptAlertbuttonOk() {
         wd.switchTo().alert().accept();
     }
+
     public void submitRemoveButton() {
         click(By.xpath("//button[.='Remove']"));
     }
+
     public boolean isContactDeleted(String phone){
 
         try {
@@ -64,9 +67,34 @@ public class HelperContact extends HelperBase{
             return true;
         }
 
-
     }
     public void tst(String phone){
         wd.findElement(By.xpath("//div[@class='contact-item_card__2SOIM']//h3[.='"+phone+"']"));
     }
+
+    public int removeOneContactLesson13(){
+        int countBefore = countContacts();
+        logger.info("Amount of contacts before is " + countBefore);
+        click(By.xpath("//div[@class='contact-item_card__2SOIM']"));
+        click(By.xpath("//button[.='Remove']"));
+        pause(1000);
+        int countAfter = countContacts();
+        logger.info("Amount of contacts after is " + countAfter);
+        return countBefore - countAfter;
+    }
+
+       public int countContacts(){
+        int count = wd.findElements(By.xpath("//div[@class='contact-item_card__2SOIM']")).size();
+        return count;
+
+       }
+
+    public void removeAllContacts(){
+    while (wd.findElements(By.xpath("//div[@class='contact-item_card__2SOIM']")).size() > 0)
+        removeOneContactLesson13();
+    }
+
+public boolean isNoContacts(){
+    return wd.findElements(By.xpath("//div[@class='contact-item_card__2SOIM']")).size() == 0;
+}
 }

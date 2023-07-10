@@ -10,8 +10,6 @@ import org.testng.annotations.*;
 import org.testng.annotations.BeforeTest;
 
 public class DeleteContactTests extends TestBase{
-    Logger logger = LoggerFactory.getLogger(DeleteContactTests.class);
-
 
     @BeforeMethod
     public void precondition(){
@@ -27,15 +25,23 @@ public class DeleteContactTests extends TestBase{
 
     }
     @Test
-    public void DeleteLastContactPositive(){
-
-
+    public void deleteLastContactPositive(){
        String lastPhone = app.getHelperContact().findAndSelectLastContactCreated();
         System.out.println("Last Contact created with phone number: "+lastPhone);
        app.getHelperContact().submitRemoveButton();
        app.getHelperContact().pause(1500);
         Assert.assertTrue(app.getHelperContact().isContactDeleted(lastPhone));
-     //   app.getHelperContact().asseptAlertbuttonOk();
+    }
+@Test
+    public void deleteLastContactPositiveLesson13(){
+       int res = app.getHelperContact().removeOneContactLesson13();
+        Assert.assertEquals(1,res);
+
     }
 
+    @Test
+    public void removeAllContactsPositive(){
+        app.getHelperContact().removeAllContacts();
+        Assert.assertTrue(app.getHelperContact().isNoContacts());
+    }
 }
