@@ -13,7 +13,7 @@ import static sun.security.jgss.GSSUtil.login;
 public class AddNewContactTests extends TestBase {
 //Spider - Men - 12345678956 - fsldfj@sdjfl.dl
 Logger logger = LoggerFactory.getLogger(AddNewContactTests.class);
-    @BeforeMethod
+    @BeforeMethod (alwaysRun = true)
     public void preconditions(){
         if (!app.getHelperUser().isLogged())
         {
@@ -26,7 +26,7 @@ Logger logger = LoggerFactory.getLogger(AddNewContactTests.class);
         }
     }
 
-    @Test (invocationCount = 3)
+    @Test (invocationCount = 3, groups = {"smoke","positive"})
     public void addNewContactPositive(){
         int i = (int)((System.currentTimeMillis()/1000)%3600);
 
@@ -45,7 +45,7 @@ Logger logger = LoggerFactory.getLogger(AddNewContactTests.class);
     app.getHelperContact().pause(1500);
        Assert.assertTrue(app.getHelperContact().isContactCreated(contact));
     }
-    @Test
+    @Test (groups = {"regress","negative"})
     public void addNewContactNegativeWrongEmail() {
         int i = (int) ((System.currentTimeMillis() / 1000) % 3600);
         Contact contact = Contact.builder()  // create a new contact by Lombok

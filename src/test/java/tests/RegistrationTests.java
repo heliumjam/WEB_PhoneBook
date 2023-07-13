@@ -11,7 +11,7 @@ import org.testng.annotations.*;
 
 public class RegistrationTests extends TestBase {
 
-    @BeforeMethod
+    @BeforeMethod (alwaysRun = true)
     public void precondition() {
         if (app.getHelperUser().isLogged()) {
             app.getHelperUser().logout();
@@ -31,7 +31,7 @@ public class RegistrationTests extends TestBase {
 //        Assert.assertTrue(app.getUser().isElementPresent(By.xpath("//button")));
 
 //    }
-    @Test
+    @Test (groups = {"smoke","positive", "regress"})
     public void registrationPositive() {
     int i = (int)((System.currentTimeMillis()/1000)%3600);
     User user = new User()
@@ -48,7 +48,7 @@ public class RegistrationTests extends TestBase {
 
     }
 
-    @Test
+    @Test (groups = {"regress","negative"})
     public void registrationNegativeWrongEmail(){
         int i = (int)((System.currentTimeMillis()/1000)%3600);
         User user = new User()
@@ -62,7 +62,7 @@ public class RegistrationTests extends TestBase {
         app.getHelperUser().pause(2000);
         app.getHelperUser().asseptAlertOk();
     }
-@Test
+@Test (groups = {"regress","negative"})
     public void registrationNegativeWrongPassword(){
         int i = (int)((System.currentTimeMillis()/1000)%3600);
  //       String email = "domes"+ i +"@mail.com", password = "123Aa$";
@@ -77,7 +77,7 @@ public class RegistrationTests extends TestBase {
         app.getHelperUser().asseptAlertOk();
 
     }
-    @Test
+    @Test (groups = {"regress","negative"})
     public void registrationNegativeUserExits() {
 //        String email = "domes7@mail.com", password = "123456Aa$";
         User user = new User()
@@ -90,7 +90,7 @@ public class RegistrationTests extends TestBase {
         app.getHelperUser().asseptAlertOk();
     }
 
-    @AfterMethod
+    @AfterMethod (alwaysRun = true)
         public void postcondition() {
         app.getHelperUser().pause(2000);
     }

@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeTest;
 
 public class DeleteContactTests extends TestBase{
 
-    @BeforeMethod
+    @BeforeMethod (alwaysRun = true)
     public void precondition(){
         if (!app.getHelperUser().isLogged())
         {
@@ -24,7 +24,7 @@ public class DeleteContactTests extends TestBase{
         }
 
     }
-    @Test
+    @Test (groups = {"smoke","positive"})
     public void deleteLastContactPositive(){
        String lastPhone = app.getHelperContact().findAndSelectLastContactCreated();
         System.out.println("Last Contact created with phone number: "+lastPhone);
@@ -32,14 +32,14 @@ public class DeleteContactTests extends TestBase{
        app.getHelperContact().pause(1500);
         Assert.assertTrue(app.getHelperContact().isContactDeleted(lastPhone));
     }
-@Test
+@Test (groups = {"smoke","positive"})
     public void deleteLastContactPositiveLesson13(){
        int res = app.getHelperContact().removeOneContactLesson13();
         Assert.assertEquals(1,res);
 
     }
 
-    @Test
+    @Test (groups = {"smoke","positive"})
     public void removeAllContactsPositive(){
         app.getHelperContact().removeAllContacts();
         Assert.assertTrue(app.getHelperContact().isNoContacts());

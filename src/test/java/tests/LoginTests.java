@@ -9,7 +9,7 @@ import org.testng.annotations.*;
 @Listeners(TestNgListener.class)
 
 public class LoginTests extends TestBase {
-    @BeforeMethod
+    @BeforeMethod (alwaysRun = true)
     public void precondition() {
         if (app.getHelperUser().isLogged()) {
             app.getHelperUser().logout();
@@ -17,7 +17,7 @@ public class LoginTests extends TestBase {
         }
     }
 
-    @Test
+    @Test (groups = {"smoke","positive"})
     public void loginPositiveTestOptimased() {
 //        String email = "domes7@mail.com";String password = "123456Aa$";
         User user = new User()
@@ -27,14 +27,10 @@ public class LoginTests extends TestBase {
         app.getHelperUser().fillLoginForm(user);
         app.getHelperUser().submitLogin();
         app.getHelperUser().pause(2000);
-        hello();
         Assert.assertTrue(app.getHelperUser().isElementPresent(By.xpath("//button")));
 
     }
-public void hello() {
-    System.out.println("Hello!");
-}
-    @Test
+    @Test (groups = {"regress","negative"})
     public void loginNegativeTestWrongEmail() {
         //String email = "domes7mail.com";String password = "123456Aa$";
         User user = new User()
@@ -50,7 +46,7 @@ public void hello() {
 
     }
 
-    @Test
+    @Test (groups = {"regress","negative"})
     public void loginNegativeTestWrongPas() {
     //    String email = "domes7@mail.com";String password = "123Aa$";
         User user = new User()
@@ -63,7 +59,7 @@ public void hello() {
         app.getHelperUser().asseptAlertOk();
     }
     @Test
-    public void loginPositiveTestCheckSignOut() {
+    public void loginTestCheckSignOut() {
        // String email = "domes287@mail.com";String password = "123456Aa$";
         User user = new User()
                 .withEmail("domes287@mail.com")
@@ -77,7 +73,7 @@ public void hello() {
         Assert.assertFalse(app.getHelperUser().isElementPresent(By.xpath("//button[.='Sign Out']")));
     }
 
-    @AfterMethod
+    @AfterMethod (alwaysRun = true)
     public void postcondition() {
         app.getHelperUser().pause(1000);
     }

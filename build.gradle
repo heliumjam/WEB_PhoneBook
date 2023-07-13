@@ -28,6 +28,11 @@ test {
 
 task myTest (type:Test){
     useTestNG(){
+        def groups = System.getProperty('groups')
+        if (groups != null){
+            includeGroups groups
+        }
+
         def suite = System.getProperty('suite','')
         if (suite.equals('reg')){
             suites '/src/test/resources/reg.xml'
@@ -40,6 +45,9 @@ task myTest (type:Test){
         }
         else if (suite.equals('del')){
             suites '/src/test/resources/contact.xml'
+        }
+        else if (suite.equals('negative')){
+            suites '/src/test/resources/negative.xml'
         }
 
         else {
