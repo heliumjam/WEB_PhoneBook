@@ -5,15 +5,14 @@ import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
-
-import static sun.security.jgss.GSSUtil.login;
 
 public class AddNewContactTests extends TestBase {
 //Spider - Men - 12345678956 - fsldfj@sdjfl.dl
 Logger logger = LoggerFactory.getLogger(AddNewContactTests.class);
-    @BeforeMethod (alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     public void preconditions(){
         if (!app.getHelperUser().isLogged())
         {
@@ -26,7 +25,8 @@ Logger logger = LoggerFactory.getLogger(AddNewContactTests.class);
         }
     }
 
-    @Test (invocationCount = 3, groups = {"smoke","positive"})
+   @Test(invocationCount = 3, groups = {"smoke","positive"})
+
     public void addNewContactPositive(){
         int i = (int)((System.currentTimeMillis()/1000)%3600);
 

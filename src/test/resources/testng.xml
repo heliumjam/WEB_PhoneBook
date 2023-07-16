@@ -4,13 +4,9 @@
     <test name="SmokePackage" >
         <classes>
             <class name="tests.LoginTests" />
+            <class name="tests.RegistrationTests" />
+            <class name="tests.AddNewContactTests" />
+            <class name="tests.DeleteContactTests" />
         </classes>
     </test>
-
-<!--    <test name="Sanity">-->
-<!--        <classes>-->
-<!--            <class name="tests.LoginTests"/>-->
-<!--            <class name="tests.RegistrationTests"/>-->
-<!--        </classes>-->
-<!--    </test>-->
 </suite>

@@ -40,13 +40,10 @@ task myTest (type:Test){
         else if (suite.equals('login')){
             suites '/src/test/resources/login.xml'
         }
-            else if (suite.equals('add')){
-            suites '/src/test/resources/add.xml'
-        }
-        else if (suite.equals('del')){
+        else if (suite.equals('contact')){
             suites '/src/test/resources/contact.xml'
         }
-        else if (suite.equals('negative')){
+        else if (suite.equals('contact')){
             suites '/src/test/resources/negative.xml'
         }
 
