@@ -1,5 +1,6 @@
 package tests;
 
+import manager.TestNgListener;
 import model.Contact;
 import model.User;
 import org.openqa.selenium.By;
@@ -8,6 +9,8 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import org.testng.annotations.BeforeTest;
+
+@Listeners(TestNgListener.class)
 
 public class DeleteContactTests extends TestBase{
 

@@ -43,10 +43,15 @@ task myTest (type:Test){
         else if (suite.equals('contact')){
             suites '/src/test/resources/contact.xml'
         }
-        else if (suite.equals('contact')){
+        else if (suite.equals('positive')){
+            suites '/src/test/resources/positive.xml'
+        }
+        else if (suite.equals('negative')){
             suites '/src/test/resources/negative.xml'
         }
-
+        else if (suite.equals('regress')){
+            suites '/src/test/resources/regress.xml'
+        }
         else {
             suites'/src/test/resources/testng.xml'
         }

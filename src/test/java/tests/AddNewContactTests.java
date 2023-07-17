@@ -1,13 +1,16 @@
 package tests;
 
+import manager.TestNgListener;
 import model.Contact;
 import model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners(TestNgListener.class)
 
 public class AddNewContactTests extends TestBase {
 //Spider - Men - 12345678956 - fsldfj@sdjfl.dl
@@ -25,7 +28,7 @@ Logger logger = LoggerFactory.getLogger(AddNewContactTests.class);
         }
     }
 
-   @Test(invocationCount = 3, groups = {"smoke","positive"})
+   @Test(invocationCount = 3, groups = {"positive"})
 
     public void addNewContactPositive(){
         int i = (int)((System.currentTimeMillis()/1000)%3600);
@@ -45,6 +48,7 @@ Logger logger = LoggerFactory.getLogger(AddNewContactTests.class);
     app.getHelperContact().pause(1500);
        Assert.assertTrue(app.getHelperContact().isContactCreated(contact));
     }
+
     @Test (groups = {"regress","negative"})
     public void addNewContactNegativeWrongEmail() {
         int i = (int) ((System.currentTimeMillis() / 1000) % 3600);

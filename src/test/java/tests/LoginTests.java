@@ -1,5 +1,6 @@
 package tests;
 
+import manager.ProviderData;
 import manager.TestNgListener;
 import model.User;
 import org.openqa.selenium.By;
@@ -17,7 +18,19 @@ public class LoginTests extends TestBase {
         }
     }
 
-    @Test (groups = {"smoke","positive"})
+    @Test (groups = {"smoke","positive"},
+            dataProvider = "userLoginPositiveDto",
+			dataProviderClass = ProviderData.class)
+    public void loginPositiveUserDTO(User user) {
+        app.getHelperUser().openLoginForm();
+        app.getHelperUser().fillLoginForm(user);
+        app.getHelperUser().submitLogin();
+        app.getHelperUser().pause(2000);
+        Assert.assertTrue(app.getHelperUser().isElementPresent(By.xpath("//button")));
+    }
+
+
+    @Test 
     public void loginPositiveTestOptimased() {
 //        String email = "domes7@mail.com";String password = "123456Aa$";
         User user = new User()
@@ -28,12 +41,11 @@ public class LoginTests extends TestBase {
         app.getHelperUser().submitLogin();
         app.getHelperUser().pause(2000);
         Assert.assertTrue(app.getHelperUser().isElementPresent(By.xpath("//button")));
-
     }
+	
     @Test (groups = {"regress","negative"})
     public void loginNegativeTestWrongEmail() {
-        //String email = "domes7mail.com";String password = "123456Aa$";
-        User user = new User()
+                User user = new User()
                 .withEmail("domes7mail.com")
                 .withPassword("123456Aa$");
         app.getHelperUser().openLoginForm();
@@ -43,13 +55,11 @@ public class LoginTests extends TestBase {
         //app.getUser().asseptAlertOk();
         Assert.assertTrue(app.getHelperUser().isWrongFormatMassage());
         Assert.assertTrue(app.getHelperUser().isAlertPresent());
-
     }
 
     @Test (groups = {"regress","negative"})
     public void loginNegativeTestWrongPas() {
-    //    String email = "domes7@mail.com";String password = "123Aa$";
-        User user = new User()
+            User user = new User()
                 .withEmail("domes7@mail.com")
                 .withPassword("1Aa$");
         app.getHelperUser().openLoginForm();
@@ -58,9 +68,9 @@ public class LoginTests extends TestBase {
         app.getHelperUser().pause(2000);
         app.getHelperUser().asseptAlertOk();
     }
+	
     @Test
     public void loginTestCheckSignOut() {
-       // String email = "domes287@mail.com";String password = "123456Aa$";
         User user = new User()
                 .withEmail("domes287@mail.com")
                 .withPassword("123456Aa$");
