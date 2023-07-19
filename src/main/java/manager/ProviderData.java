@@ -2,6 +2,11 @@ package manager;
 
 import model.User;
 import org.testng.annotations.*;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 
@@ -68,5 +73,22 @@ public class ProviderData{
             );
 			 return list.iterator();
     }
-			
+
+    @DataProvider
+    public Iterator<Object[]> userRegDtoCSV() throws IOException {
+        List<Object[]> list = new ArrayList<>();
+        BufferedReader reader = new BufferedReader(
+                new FileReader(new File("C:\\Users\\heliu\\Documents\\IT\\GitHub\\PhoneBook\\src\\test\\resources\\reg_dataList.csv")));
+        String line = reader.readLine();
+        while (line != null){
+            String [] split = line.split(",");
+            list.add(new Object[]{new User()
+                    .withEmail(split[0])
+                    .withPassword(split[1])
+            });
+
+            line = reader.readLine();
+        }
+        return list.iterator();
+    }
 }

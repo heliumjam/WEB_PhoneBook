@@ -20,7 +20,7 @@ public class RegistrationTests extends TestBase {
         }
     }
 
-    @Test (groups = {"smoke","positive", "regress"})
+    @Test (groups = {"positive", "regress"})
     public void registrationPositive() {
     int i = (int)((System.currentTimeMillis()/1000)%3600);
     User user = new User()
@@ -48,7 +48,19 @@ public class RegistrationTests extends TestBase {
 		logger.info("User registration NegativeDTO successfully with Email: "
                       + user.getEmail() +" & Password: " + user.getPassword());
     }
-	
+
+    @Test (dataProvider = "userRegDtoCSV",
+            dataProviderClass = ProviderData.class)
+    public void PositiveRegDTOCSVTest(User user) {
+//        app.getHelperUser().openLoginForm();
+//        app.getHelperUser().fillLoginForm(user);
+//        app.getHelperUser().submitRegistration();
+//        app.getHelperUser().pause(2000);
+//        Assert.assertTrue(app.getHelperUser().isElementPresent(By.xpath("//button")));
+//
+//        logger.info("User registration DTO Positive successfully with Email: : "
+//                + user.getEmail() +" & Password: " + user.getPassword());
+    }
 
     @Test (groups = {"regress","negative"})
     public void registrationNegativeWrongEmail(){

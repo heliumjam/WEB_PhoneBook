@@ -2,8 +2,9 @@
 myTest
 
 groups:
-"smoke","positive"
-"regress","negative"
+"positive",
+"regress",
+"negative"
 
 suites:
 reg
