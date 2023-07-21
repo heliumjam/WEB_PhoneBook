@@ -5,6 +5,8 @@ import org.openqa.selenium.remote.BrowserType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.*;
+
+import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class TestBase {
@@ -15,7 +17,7 @@ public class TestBase {
             );
 
     @BeforeSuite (alwaysRun = true)
-    public void setUp(){
+    public void setUp() throws IOException {
         app.init();
     }
 

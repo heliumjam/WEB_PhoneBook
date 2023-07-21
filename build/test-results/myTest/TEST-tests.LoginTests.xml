@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="tests.LoginTests" tests="9" skipped="0" failures="0" errors="0" timestamp="2023-07-20T15:57:11" hostname="MIRI" time="57.235">
+  <properties/>
+  <testcase name="loginNegativeTestWrongEmail" classname="tests.LoginTests" time="2.378"/>
+  <testcase name="loginNegativeTestWrongPas" classname="tests.LoginTests" time="2.381"/>
+  <testcase name="loginPositiveTestOptimased" classname="tests.LoginTests" time="2.377"/>
+  <testcase name="loginPositiveUserDTO[0](model.User@c9413d8)" classname="tests.LoginTests" time="2.392"/>
+  <testcase name="loginPositiveUserDTO[1](model.User@52350abb)" classname="tests.LoginTests" time="2.371"/>
+  <testcase name="loginPositiveUserDTO[2](model.User@77b21474)" classname="tests.LoginTests" time="2.379"/>
+  <testcase name="loginPositiveUserDTO[3](model.User@10567255)" classname="tests.LoginTests" time="2.382"/>
+  <testcase name="loginPositiveUserProps" classname="tests.LoginTests" time="2.35"/>
+  <testcase name="loginTestCheckSignOut" classname="tests.LoginTests" time="7.452"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

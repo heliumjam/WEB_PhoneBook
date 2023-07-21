@@ -29,6 +29,16 @@ public class LoginTests extends TestBase {
         Assert.assertTrue(app.getHelperUser().isElementPresent(By.xpath("//button")));
     }
 
+    @Test (groups = {"smoke","positive"})
+    public void loginPositiveUserProps() {
+        //        lesson 16
+        app.getHelperUser().openLoginForm();
+        app.getHelperUser().fillLoginForm(app.getEmail(), app.getPassword());
+        app.getHelperUser().submitLogin();
+        app.getHelperUser().pause(2000);
+        Assert.assertTrue(app.getHelperUser().isElementPresent(By.xpath("//button")));
+    }
+
 
     @Test 
     public void loginPositiveTestOptimased() {
