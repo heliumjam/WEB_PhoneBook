@@ -28,7 +28,7 @@ Logger logger = LoggerFactory.getLogger(AddNewContactTests.class);
         }
     }
 
-   @Test(invocationCount = 3, groups = {"positive"})
+   @Test(invocationCount = 3, groups = {"positive","smoke"})
 
     public void addNewContactPositive(){
         int i = (int)((System.currentTimeMillis()/1000)%3600);
