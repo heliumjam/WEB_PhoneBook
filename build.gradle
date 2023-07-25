@@ -43,6 +43,9 @@ task myTest (type:Test){
         else if (suite.equals('contact')){
             suites '/src/test/resources/contact.xml'
         }
+        else if (suite.equals('addcontact')){
+            suites '/src/test/resources/addcontact.xml'
+        }
         else if (suite.equals('positive')){
             suites '/src/test/resources/positive.xml'
         }

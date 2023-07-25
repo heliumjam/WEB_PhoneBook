@@ -34,7 +34,10 @@ contact
 + Login Negative -Chrome
 ./gradlew clean -Pbrowser=chrome -Dsuite=login -Dgroups=negative myTest
 
-+ AddCar/Delete contact Smoke Tests 
++ Add contacts 
+  ./gradlew clean -Pbrowser=chrome -Dsuite=addcontact myTest
+
++ Add/Delete All contacts Smoke Tests 
 ./gradlew clean -Pbrowser=chrome -Dsuite=contact -Dgroups=smoke myTest
 
 
