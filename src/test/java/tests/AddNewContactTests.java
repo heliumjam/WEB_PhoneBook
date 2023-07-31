@@ -47,6 +47,7 @@ Logger logger = LoggerFactory.getLogger(AddNewContactTests.class);
     app.getHelperContact().submitContactForm();
     app.getHelperContact().pause(1500);
        Assert.assertTrue(app.getHelperContact().isContactCreated(contact));
+       //Assert.assertEquals(response.code(), 200);
     }
 
     @Test (groups = {"regress","negative"})
